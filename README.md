@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sports Celebrity History Reels
+
+A Next.js application that displays AI-generated history reels for sports celebrities in a TikTok-style vertical scrolling interface.
+
+## Project Overview
+
+This application allows users to browse through short, engaging history reels about sports celebrities. The frontend is built with Next.js and features a smooth, mobile-friendly UI with vertical scrolling similar to TikTok or Instagram Reels.
+
+## Features
+
+- **Vertical Scrolling Interface**: Smooth, snap-to-content scrolling for video reels
+- **Video Controls**: Play/pause, mute/unmute functionality
+- **Like Interaction**: Users can like videos
+- **Category Filtering**: Filter reels by sports category
+- **Responsive Design**: Optimized for both mobile and desktop
+- **API Integration**: Fetches video data from API endpoints
+
+## Tech Stack
+
+- **Frontend**: Next.js with App Router, React, Tailwind CSS
+- **Animation**: Framer Motion for UI animations
+- **Video Handling**: Custom video player with autoplay capabilities
+- **Interaction**: react-swipeable for gesture handling
+- **API**: Next.js API routes (to be connected to AWS S3 in production)
+
+## Project Structure
+
+```
+sports-celebrity-reels/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── videos/
+│   │   │       └── route.js  # API endpoint for videos
+│   │   ├── layout.js         # Root layout component
+│   │   ├── page.js           # Home page component
+│   │   ├── loading.js        # Loading state component
+│   │   └── error.js          # Error handling component
+│   ├── components/
+│   │   ├── ReelContainer.js  # Container for video reels
+│   │   ├── ReelCard.js       # Individual video card component
+│   │   └── Navigation.js     # Category navigation component
+│   └── data/
+│       └── mockVideos.js     # Mock data for development
+└── package.json
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 14.x or higher
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd sports-celebrity-reels
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn
+```
+
+3. Run the development server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Next Steps
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Phase 1: Frontend Enhancements (Current)
+- [ ] Add animation transitions between reels
+- [ ] Implement preloading for smoother video transitions
+- [ ] Add share functionality
+- [ ] Implement user authentication
 
-## Learn More
+### Phase 2: Backend Integration
+- [ ] Set up AWS S3 bucket for video storage
+- [ ] Create serverless functions for video processing
+- [ ] Implement metadata tagging system
+- [ ] Connect frontend to actual S3 storage
 
-To learn more about Next.js, take a look at the following resources:
+### Phase 3: AI Video Generation
+- [ ] Implement OpenAI integration for script generation
+- [ ] Set up Amazon Polly for text-to-speech
+- [ ] Create image sourcing pipeline
+- [ ] Develop video compilation service
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application is designed to be deployed on Vercel for optimal Next.js support:
 
-## Deploy on Vercel
+```bash
+npm run build
+vercel --prod
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
