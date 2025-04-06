@@ -8,6 +8,28 @@
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
 }
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Ensure the main app container allows scrolling */
+#__next,
+main {
+  min-height: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+/* Fix for mobile devices */
+@media (max-width: 768px) {
+  .overflow-fix {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 body {
   color: rgb(var(--foreground-rgb));
