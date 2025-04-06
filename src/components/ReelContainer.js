@@ -9,26 +9,30 @@ export default function ReelContainer({ category = 'All' }) {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  // Fetch videos from API
-  useEffect(() => {
-    const fetchVideos = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch('/api/videos');
-        if (!response.ok) {
-          throw new Error('Failed to fetch videos');
-        }
-        const data = await response.json();
-        setVideos(data);
-      } catch (error) {
-        console.error('Error fetching videos:', error);
-      } finally {
-        setLoading(false);
+ // Fetch videos from API
+ useEffect(() => {
+  const fetchVideos = async () => {
+    setLoading(true);
+    try {
+      // Use category parameter if not 'All'
+      const categoryParam = category !== 'All' ? `?category=${category}` : '';
+      const response = await fetch(`/api/videos${categoryParam}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch videos');
       }
-    };
+      
+      const data = await response.json();
+      setVideos(data.videos || []);
+    } catch (error) {
+      console.error('Error fetching videos:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchVideos();
-  }, []);
+  fetchVideos();
+}, [category]);
 
   // Function to handle when a video has been viewed
   const handleVideoViewed = (index) => {
